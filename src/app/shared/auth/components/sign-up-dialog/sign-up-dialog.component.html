@@ -1,0 +1,32 @@
+<app-shared-loader *ngIf="loading$ | async"></app-shared-loader>
+<div class="dialog-wrapper">
+    <h3>Реєстрація:</h3>
+    <form [formGroup]="form">
+        <div class="form-wrapper">
+            <label class="form-label">Ім'я:</label>
+            <input class="form-control" type="text" formControlName="name">
+        </div>
+        <div class="form-wrapper">
+            <label class="form-label">Пароль:</label>
+            <input class="form-control" type="text" formControlName="password">
+        </div>
+    </form>
+
+
+    <button
+        mat-raised-button
+        class="w-100 mt-3"
+        color="accent"
+        [disabled]="form.invalid || form.pristine"
+        (click)="submit()">
+        Надіслати
+    </button>
+    <button
+        mat-raised-button
+        class="w-100 mt-3"
+        color="warn"
+        (click)="closeDialog()">
+        Повернутись назад
+    </button>
+</div>
+

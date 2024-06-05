@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'ag-grid-community/styles/ag-grid.css';
+@import 'ag-grid-community/styles/ag-theme-material.css';
+
+html, body {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+label {
+  margin-bottom: 0!important;
+}
+
+ul {
+  list-style: none!important;
+  padding: 0!important;
+  margin: 0!important;
+}
+
+.dialog-wrapper {
+  max-height: 60vh;
+  padding: 30px;
+  text-align: center;
+}
+

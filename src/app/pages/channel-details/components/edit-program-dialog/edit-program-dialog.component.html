@@ -1,0 +1,76 @@
+<div class="dialog-wrapper">
+    <h3 class="dialog-heading border-bottom">Редагування програми:</h3>
+
+    <form class="form-wrapper border-bottom" [formGroup]="form">
+        <ng-container formArrayName="programs">
+            <div
+                *ngFor="let program of programs.controls; let i = index"
+                class="program-form"
+                [formGroupName]="i">
+                <label class="form-label">День тижня:</label>
+                <input class="form-control" type="number" min="1" max="7" formControlName="day">
+                <ng-container formArrayName="shows">
+                    <div
+                        *ngFor="let show of getShowArray(program).controls; let j = index"
+                        class="show-form"
+                        [formGroupName]="j">
+                        <label class="form-label">Назва шоу:</label>
+                        <input class="form-control" type="text" formControlName="name">
+
+                        <label class="form-label">Початок:</label>
+                        <input class="form-control" type="time" formControlName="startTime">
+
+                        <label class="form-label">Кінець:</label>
+                        <input class="form-control" type="time" formControlName="endTime">
+
+                        <button
+                            mat-raised-button
+                            class="w-100 mt-3 remove-show"
+                            color="warn"
+                            (click)="removeShow(program, j)">
+                            Видалити шоу
+                        </button>
+                    </div>
+                </ng-container>
+                <button
+                    mat-raised-button
+                    class="w-100 mt-3"
+                    color="accent"
+                    (click)="addShow(program)">
+                    Додати шоу
+                </button>
+                <button
+                    mat-raised-button
+                    class="w-100 mt-3"
+                    color="warn"
+                    (click)="removeProgram(i)">
+                    Видалити програму
+                </button>
+            </div>
+        </ng-container>
+    </form>
+  <button
+    mat-raised-button
+    class="w-100 mt-3"
+    color="accent"
+    [disabled]="programs.length === 7"
+    (click)="addProgram()">
+    Додати програму (День тижня)
+  </button>
+  <button
+    mat-raised-button
+    class="w-100 mt-3"
+    color="accent"
+    [disabled]="form.invalid || form.pristine"
+    (click)="submit()">
+    Застосувати зміни
+  </button>
+    <button
+        mat-raised-button
+        class="w-100 mt-3"
+        color="warn"
+        (click)="closeDialog()">
+        Повернутись назад
+    </button>
+</div>
+

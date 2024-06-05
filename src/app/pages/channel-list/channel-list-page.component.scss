@@ -1,0 +1,16 @@
+.wrapper {
+  display: flex;
+  justify-content: start;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 88%;
+  margin: 20px auto 50px;
+}
+
+app-channel-list-item {
+  cursor: pointer;
+}
+
+.create-channel {
+  width: 100%;
+}

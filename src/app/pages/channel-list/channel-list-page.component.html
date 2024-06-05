@@ -1,0 +1,36 @@
+<app-shared-loader *ngIf="loading$ | async"></app-shared-loader>
+<ng-container *ngIf="(loading$ | async) === false">
+    <div class="wrapper">
+        <button
+            *ngIf="((user$ | async)?.roles || []) | validateRoles: UserRole.Admin"
+            mat-raised-button
+            class="create-channel mt-3"
+            color="accent"
+            (click)="createChannel()">
+            Створити канал
+        </button>
+        <div class="w-100 d-flex justify-content-between">
+            <button
+                mat-raised-button
+                class="col-5"
+                color="accent"
+                [disabled]="!channels.length"
+                (click)="sort(true)">
+                Сортувати за зростанням
+            </button>
+            <button
+                mat-raised-button
+                class="col-5"
+                color="accent"
+                [disabled]="!channels.length"
+                (click)="sort(false)">
+                Сортувати за спаданням
+            </button>
+        </div>
+        <app-channel-list-item
+            *ngFor="let channel of channels"
+            [channel]="channel"
+            (click)="openChannelDetails(channel.id)">
+        </app-channel-list-item>
+    </div>
+</ng-container>

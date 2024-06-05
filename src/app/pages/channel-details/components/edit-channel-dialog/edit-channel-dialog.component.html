@@ -1,0 +1,25 @@
+<app-shared-loader *ngIf="loading$ | async"></app-shared-loader>
+<div class="dialog-wrapper">
+    <h3>Редагування каналу:</h3>
+    <div class="form-wrapper">
+        <label class="form-label">Назва каналу:</label>
+        <input class="form-control" type="text" [formControl]="control">
+    </div>
+
+    <button
+        mat-raised-button
+        class="w-100 mt-3"
+        color="accent"
+        [disabled]="control.invalid || control.pristine"
+        (click)="submit()">
+        Редагувати канал
+    </button>
+    <button
+        mat-raised-button
+        class="w-100 mt-3"
+        color="warn"
+        (click)="closeDialog()">
+        Повернутись назад
+    </button>
+</div>
+

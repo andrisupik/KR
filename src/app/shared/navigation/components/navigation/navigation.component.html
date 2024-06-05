@@ -1,0 +1,60 @@
+<nav class="navigation">
+    <ul class="d-flex justify-content-between">
+        <ul class="d-flex">
+            <li>
+                <a
+                    mat-raised-button
+                    class="bg-white mx-2"
+                    [routerLink]="['home']">
+                    Головна
+                </a>
+            </li>
+            <li>
+                <a
+                    mat-raised-button
+                    class="bg-white mx-2"
+                    [disabled]="(user$ | async) === null"
+                    [routerLink]="['channels']">
+                    Канали
+                </a>
+            </li>
+        </ul>
+        <ul class="d-flex" [class.d-none]="(user$ | async)">
+            <li>
+                <button
+                    mat-raised-button
+                    class="bg-white mx-2"
+                    (click)="signIn()">
+                    Вхід
+                </button>
+            </li>
+            <li>
+                <button
+                    mat-raised-button
+                    class="bg-white mx-2"
+                    (click)="signUp()">
+                    Реєстрація
+                </button>
+            </li>
+        </ul>
+        <ul class="d-flex align-items-center" [class.d-none]="(user$ | async) === null">
+            <li>
+                <button
+                    mat-raised-button
+                    disabled
+                    color="primary"
+                    class="mx-2">
+                    {{ (user$ | async)?.username }}
+                </button>
+            </li>
+            <li>
+                <button
+                    mat-raised-button
+                    class="bg-white mx-2"
+                    (click)="signOut()">
+                    Вихід
+                </button>
+            </li>
+        </ul>
+    </ul>
+</nav>

@@ -1,0 +1,32 @@
+.wrapper {
+  margin: 0 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.example-tree {
+  display: grid;
+  gap: 25px;
+  grid-template-columns: repeat(7, 200px);
+}
+
+.example-tree-invisible {
+  display: none;
+}
+
+.example-tree ul,
+.example-tree li {
+  margin: 0;
+  list-style-type: none;
+}
+
+.show-button {
+  width: 100%;
+  padding: 25px 10px;
+  margin: 5px 0;
+}
+
+.details-button {
+  margin-top: 10px;
+  width: 200px;
+}
